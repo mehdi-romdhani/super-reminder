@@ -1,0 +1,249 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Gris clair */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #3498db; /* Bleu vif */
+    color: #fff;
+    padding: 15px 0;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    height: 80px;
+  }
+  
+  .menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    color: #fff; /* Blanc */
+  }
+  
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fond d'overlay légèrement transparent en noir */
+    z-index: 1000;
+    display: none;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; /* Blanc */
+    position: absolute;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .menu ul {
+    padding: 20px;
+  }
+  
+  .menu li {
+    margin: 10px 0;
+  }
+  
+  .menu-close {
+    font-size: 30px;
+    font-family: "Mooli", sans-serif;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333; /* Gris foncé */
+  }
+  
+  /* Couleur des liens du menu */
+  .menu a {
+    color: #3498db; /* Bleu vif */
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  /* Changement de couleur des liens au survol */
+  .menu a:hover {
+    color: #2980b9; /* Bleu foncé au survol */
+  }
+  
+  /* Contenu du site */
+  .content {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .presentation {
+    margin-bottom: 20px;
+  }
+  
+  .presentation h1 {
+    font-size: 32px;
+    color: #333; /* Gris foncé */
+    margin-bottom: 10px;
+    font-family: "Mooli", sans-serif;
+  }
+  
+  .presentation p {
+    font-size: 18px;
+    color: #555; /* Gris moyen */
+    font-family: "Mooli", sans-serif;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .signin-button,
+  .signup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #3498db; /* Bleu vif */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.2s;
+    font-family: "Mooli", sans-serif;
+  }
+  
+  .signin-button:hover,
+  .signup-button:hover {
+    background-color: #2980b9; /* Bleu foncé au survol */
+  }
+
+/* Styles pour le formulaire */
+.container-form {
+    background-color: #fff; /* White background for the form */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    max-width: 400px; /* Limit form width for readability */
+    margin: 0 auto; /* Center the form horizontally */
+    position: relative; /* Ajouter cette ligne pour positionner le bouton de fermeture */
+}
+
+/* Styles pour le bouton de fermeture à l'intérieur du formulaire */
+.close-button {
+    background-color: #3498db; /* Couleur de fond du bouton de fermeture (bleu vif) */
+    color: #fff; /* Couleur du texte (blanc) */
+    border: none;
+    border-radius: 50%; /* Pour obtenir un bouton rond */
+    width: 30px; /* Largeur du bouton */
+    height: 30px; /* Hauteur du bouton */
+    font-size: 18px;
+    line-height: 1; /* Pour centrer le texte verticalement */
+    position: absolute;
+    top: 10px; /* Ajustez la position verticale selon vos besoins */
+    right: 10px; /* Ajustez la position horizontale selon vos besoins */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    background-color: #ff4040; /* Couleur de fond plus foncée au survol (rouge plus foncé) */
+}
+
+/* Styles pour les autres éléments du formulaire (étiquettes et champs de texte) */
+.container-form label {
+    font-weight: bold;
+}
+
+.container-form input[type="text"],
+.container-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container-form input[type="submit"] {
+    background-color: #3498db; /* Blue button background color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .menu-overlay.active {
+      display: block;
+    }
+  
+    .menu.active {
+      right: 0;
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  
+    .presentation h1 {
+      font-size: 24px;
+      font-family: "Mooli", sans-serif;
+    }
+  
+    .presentation p {
+      font-size: 16px;
+      font-family: "Mooli", sans-serif;
+    }
+  
+    .buttons {
+      flex-direction: column;
+    }
+  
+    .signin-button,
+    .signup-button {
+      margin: 10px 0;
+    }
+
+    .container-form {
+        width: 90%; /* Adjust form width for smaller screens */
+    }
+
+    .container-form input[type="text"],
+    .container-form input[type="password"] {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+  }
+  
+
