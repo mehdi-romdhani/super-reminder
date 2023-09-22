@@ -74,5 +74,13 @@ class User extends ConnectDb
     {
         // Implémentez votre logique d'enregistrement ici en utilisant les getters pour accéder aux propriétés.
         
+        $req = "INSERT INTO users (login, firstname, lastname, password ) VALUES (:login-signin, :firstname-signin, :lastname-signin; :password-signin)";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(':login-singnin', $array['login-signin']);
+        $stmt->bindParam(':firstname-singnin', $array['firstname-signin']);
+        $stmt->bindParam(':lastname-singnin', $array['lastname-signin']);
+        $stmt->bindParam(':password-singnin', $array['password-signin']);
+        $stmt->execute();
+        
     }
 }

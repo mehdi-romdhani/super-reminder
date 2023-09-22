@@ -18,6 +18,7 @@ use App\Model\ConnectDb;
     <script src="./public/js/menu.js" defer></script>
     <script src="./public/js/script.js" defer></script>
     <script src="./public/js/script_control_form.js" defer></script>
+    <script src="./public/js/connexion.js" defer></script>
     <title>Organize Me</title>
 </head>
 <body>
@@ -32,7 +33,7 @@ use App\Model\ConnectDb;
                     <div class="menu-close" id="menu-close">&times;</div>
                     <ul>
                         <li><a href="#">SignIn</a></li>
-                        <li><a href="#">SignUp</a></li>
+                        <li><a  href="#">SignUp</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,7 +47,7 @@ use App\Model\ConnectDb;
         </div>
         <div class="buttons">
             <a href="#" class="signin-button">Inscription</a>
-            <a href="#" class="signup-button">Connexion</a>
+            <a href="#" id="test" class="signup-button">Connexion</a>
         </div>
         <div class="container-form">
 

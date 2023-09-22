@@ -1,12 +1,12 @@
-<form  method="POST">
+<form  id="form-connect" method="POST">
 
-    <button type="button" class="close-button">X</button>
+    <button type="button" class="closeButton">X</button>
     
     <label for="login">Login</label>
-    <input type="text" id="login" name="login-signinup" required><br><br>
+    <input type="text" id="login" name="login" required><br><br>
 
     <label for="password">Mot de Passe</label>
-    <input type="password" id="password" name="password-signup" required><br><br>
+    <input type="password" id="password" name="passwordSignup" required><br><br>
 
     <input type="submit" value="Connexion">
 

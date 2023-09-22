@@ -39,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
       divButtons.style.display = "flex";
       containerForm.style.display = "none";
     });
+
+  
+    let formConnect = document.getElementById('form-connect')
+    console.log(formConnect.login);
+      
+     const login = 
   };
 
   //Event
@@ -48,5 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnSignUp.addEventListener("click", () => {
     fetchPageSignUp();
+   
   });
 });
