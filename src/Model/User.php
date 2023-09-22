@@ -4,11 +4,16 @@ namespace App\Model;
 
 class User extends ConnectDb
 {
+
+    protected ?string $table = "users";
+
     public ?int $id;
     public ?string $login;
     public ?string $firstname;
     public ?string $lastname;
     public ?string $password;
+
+
 
     function __construct()
     {
@@ -69,10 +74,34 @@ class User extends ConnectDb
     {
         return $this->password;
     }
-
     public function registerUser(array $array)
     {
-        // Implémentez votre logique d'enregistrement ici en utilisant les getters pour accéder aux propriétés.
-        
+        $req = "INSERT INTO $this->table(login,firstname,lastname,password) VALUES(:logins,:firstnames,:lastnames,:passwords)";
+        // echo "Requête SQL : $req"; // Affichez la requête SQL pour le débogage
+
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(':logins', $array['login-signin']);
+        $stmt->bindParam(':firstnames', $array['firstname-signin']);
+        $stmt->bindParam(':lastnames', $array['lastname-signin']);
+        $stmt->bindParam(':passwords', $array['password-signin']);
+        $stmt->execute();
+
+        // echo "Paramètres : ";
+        // print_r($array); // Affichez les valeurs des paramètres pour le débogage
+
+    }
+
+    public function verifUser(string $array)
+    {
+        $req = "SELECT login FROM $this->table WHERE login = :login ";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(':login', $array['login-signin']);
+        $stmt->execute();
+        $result = $stmt->fetchAll($this->pdo::FETCH_ASSOC);
+        if (count($result) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
