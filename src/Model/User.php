@@ -91,17 +91,32 @@ class User extends ConnectDb
 
     }
 
-    public function verifUser(string $array)
+    public function verifUser(string $login)
     {
         $req = "SELECT login FROM $this->table WHERE login = :login ";
         $stmt = $this->pdo->prepare($req);
-        $stmt->bindParam(':login', $array['login-signin']);
+        $stmt->bindParam(':login', $login);
         $stmt->execute();
         $result = $stmt->fetchAll($this->pdo::FETCH_ASSOC);
-        if (count($result) > 0) {
+        if (count($result) == 0) {
             return true;
         } else {
             return false;
         }
     }
+
+    public function connect(string $login)
+    {
+
+        $req = "SELECT * FROM $this->table WHERE login = :login";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(':login', $login);
+        $stmt->execute();
+        $result = $stmt->fetch($this->pdo::FETCH_ASSOC);
+        // var_dump($result);
+        return $result;
+       
+    }
+
+  
 }

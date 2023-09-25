@@ -1,11 +1,12 @@
 <?php
 
-
-require 'vendor/autoload.php'; //Autoloader 7
-use App\Model\ConnectDb;
-
+session_start();
+var_dump($_SESSION);
 
 ?>
+
+<?php if(($_SESSION['login'])) : ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +22,8 @@ use App\Model\ConnectDb;
     <title>Organize Me</title>
 </head>
 <body>
-    
-    <header>
+
+<header>
         <nav>
             <div class="logo">
                 <a href="#"><img src="./public/img/logo-website.png" alt="Logo"></a>
@@ -40,23 +41,29 @@ use App\Model\ConnectDb;
         </nav>
     </header>
 
-    <main class="content">
-        <div class="presentation">
-            <h1>Bienvenue sur Organize Me</h1>
-            <p>La solution parfaite pour gérer vos tâches quotidiennes.</p>
-        </div>
-        <div class="buttons">
-            <a href="#" class="signin-button">Inscription</a>
-            <a href="#" class="signup-button">Connexion</a>
-        </div>
-        <div class="container-form">
+    <a href="../../super-reminder/logout.php"><button type="submit">Déconnexion</button></a> 
+    
 
-        </div>
-    </main>
+    <p>Bonjour </p>
+    <?php if(isset($_SESSION['login'])){
+        echo $_SESSION['login'];
+    }
+    
+    ?>
 
-</body>
-</html>
+     <div id="task-form-container">
+        <form method="POST" id="task-form">
+            <input type="text" id="task" name="task">
+            <input type="submit" name="submit-task" value ="+">
+        </form>
+     </div>
+     <div id="task-container">
+        <h1>Mes tâches</h1>
+     </div>
+       
+    </body>
+    </html>
 
-
-
-
+    <?php else : ?>
+        <?php header('Location : ./error.php'); ?>
+    <?php endif; ?>

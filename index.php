@@ -10,9 +10,13 @@ $router->setBasePath('/super-reminder');
 
 //Second Part 
 
-$router->map( 'GET', '/', function() {
+$router->map( 'GET', '/home', function() {
     require __DIR__ . '/src/View/home.php';
 	
+});
+
+$router->map( 'GET', '/users', function() {
+    require __DIR__ . '/src/View/home_task.php';
 });
 
 

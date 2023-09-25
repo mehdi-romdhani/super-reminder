@@ -65,8 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const fetchPageSignUp = async () => {
+
+    //requete de la page 
     const fetchPageSignUp = await fetch("./src/View/signup.php");
     const getFetchPage = await fetchPageSignUp.text();
+    console.log(getFetchPage);
+  
+
+
     containerForm.innerHTML = getFetchPage;
     const btnClose = document.querySelector(".close-button");
     divButtons.style.display = "none";
@@ -77,7 +83,48 @@ document.addEventListener("DOMContentLoaded", () => {
       divButtons.style.display = "flex";
       containerForm.style.display = "none";
     });
+
+
+    //tu peux recuperer tous les éléments du formulaire 
+
+    const formConnect = document.querySelector('#formConnect');
+    const messConnect = document.querySelector('#messConnect');
+
+    console.log(formConnect);
+    formConnect.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      console.log('formConnect');
+
+      const formData = new FormData(formConnect);
+      const fetchFormConnect = await fetch("./src/View/signup.php?login",{
+        method: 'POST',
+        body: formData,
+      })
+
+      const response = await fetchFormConnect.json();
+      //message json
+      if(response['connectEmpty']){
+        messConnect.textContent=response.connectEmpty;
+        messConnect.style.color = "red";
+
+      }else if(response['checkLogin']){
+        messConnect.textContent=response.checkLogin;
+        messConnect.style.color = "red";
+        setTimeout(()=>{
+          messConnect.textContent = "";
+
+        }
+        ,2000);
+      }else if(response['validConnect']){
+        messConnect.textContent=response.validConnect;
+        messConnect.style.color = "green";
+        window.location.href = 'users';
+      }
+    
+
+    })
   };
+
 
   //Event
   btnSignIn.addEventListener("click", () => {
@@ -88,3 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPageSignUp();
   });
 });
+
+
+// deconnexion
+
+
