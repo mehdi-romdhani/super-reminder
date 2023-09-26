@@ -1,6 +1,6 @@
 {
     "require": {
-      "altorouter/altorouter": "1.1.0"
+      "altorouter/altorouter": "^2.0"
     },
     "autoload": {
       "psr-4": {
@@ -8,4 +8,3 @@
       }
     }
   }
-  
