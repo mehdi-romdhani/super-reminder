@@ -1,7 +1,23 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+
 session_start();
-var_dump($_SESSION);
+
+use App\Controller\ControllerTask;
+use App\Model\Task;
+$displayTask = new Task();
+var_dump($_SESSION['id']);
+var_dump($displayTask->displayTask((int)$_SESSION['id']));
+
+$newTask = new ControllerTask();
+
+
+if(isset($_GET['task'])){
+    $newTask->controllerAddTask($_POST);
+    die();
+}
+
 
 ?>
 
@@ -19,6 +35,7 @@ var_dump($_SESSION);
     <script src="./public/js/menu.js" defer></script>
     <script src="./public/js/script.js" defer></script>
     <script src="./public/js/script_control_form.js" defer></script>
+    <script src="./public/js/task.js" defer></script>
     <title>Organize Me</title>
 </head>
 <body>
@@ -48,13 +65,13 @@ var_dump($_SESSION);
     <?php if(isset($_SESSION['login'])){
         echo $_SESSION['login'];
     }
-    
     ?>
 
      <div id="task-form-container">
         <form method="POST" id="task-form">
             <input type="text" id="task" name="task">
             <input type="submit" name="submit-task" value ="+">
+            <span id="messTask"></span> 
         </form>
      </div>
      <div id="task-container">

@@ -16,6 +16,7 @@ class Task extends ConnectDb
     public ?DateTime $dateEnd;
     public ?int $taskDone;
     public ?int $idList;
+    public ?int $idUsers;
     
     
         // Getter pour $id
@@ -85,16 +86,48 @@ class Task extends ConnectDb
         {
             $this->idList = $idList;
         }
-        
-        public function addTask(?string $task ){
 
-            $req = "INSERT INTO $this->table(task_description, date_begin, date_end, task_done, id_list) VALUES (:task, NOW(), NULL, :taskdone, NULL)";
+          // Getter et Setter pour $idUsers
+          public function getIdUsers(): ?int
+          {
+              return $this->idList;
+          }
+      
+          public function setIdUsers(?int $idList): void
+          {
+              $this->idList = $idList;
+          }
+          
+        
+        public function addTask(?array $task, string $id ){
+
+            
+            $req = "INSERT INTO $this->table(task_description, date_begin, date_end, task_done, id_list, id_users) VALUES (:task, NOW(), NULL, :taskdone, NULL, :id_users )";
             $stmt = $this->pdo->prepare($req);
-            $stmt->bindParam(':task', $task);
+            $stmt->bindParam(':task', $task['task']);
+            $stmt->bindParam(':id_users',$id);
             $stmt->bindValue(':taskdone', 0);
             $stmt->execute();
 
         }
+
+
+        public function displayTask(int $id) {
+          
+             if ($id === null) {
+             return null;
+             }
+            
+            $req = "SELECT * FROM task INNER JOIN users ON task.id_users = users.id WHERE id_users = :id";
+            $stmt = $this->pdo->prepare($req);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetchAll($this->pdo::FETCH_ASSOC);
+            
+             return $result;
+            }
+            
+            
 
 
 }
