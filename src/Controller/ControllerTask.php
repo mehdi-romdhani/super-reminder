@@ -32,14 +32,12 @@ public function controllerAddTask(array $array){
     echo json_encode($mess);
 }
 
-public function controllerDisplayTask(){
 
-    $id = $_SESSION['id'];
 
     
 
 
-}
+
 
 
 }

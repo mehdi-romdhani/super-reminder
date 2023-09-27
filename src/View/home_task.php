@@ -6,9 +6,10 @@ session_start();
 
 use App\Controller\ControllerTask;
 use App\Model\Task;
+
 $displayTask = new Task();
-var_dump($_SESSION['id']);
-var_dump($displayTask->displayTask((int)$_SESSION['id']));
+
+$displayTask->displayTask((int)$_SESSION['id']);
 
 $newTask = new ControllerTask();
 
@@ -17,6 +18,7 @@ if(isset($_GET['task'])){
     $newTask->controllerAddTask($_POST);
     die();
 }
+
 
 
 ?>
@@ -70,14 +72,16 @@ if(isset($_GET['task'])){
      <div id="task-form-container">
         <form method="POST" id="task-form">
             <input type="text" id="task" name="task">
-            <input type="submit" name="submit-task" value ="+">
+            <input type="submit" id = "submit-task" name="submit-task" value ="+">
             <span id="messTask"></span> 
         </form>
      </div>
      <div id="task-container">
         <h1>Mes tâches</h1>
      </div>
-       
+     <div id="task-done">
+        
+     </div>  
     </body>
     </html>
 
