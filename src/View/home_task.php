@@ -9,7 +9,7 @@ use App\Model\Task;
 
 $displayTask = new Task();
 
-$displayTask->displayTask((int)$_SESSION['id']);
+var_dump($displayTask->displayTask((int)$_SESSION['id']));
 
 $newTask = new ControllerTask();
 
