@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  //All Variables
+
+
+  // ------------  All Variables ------------
   const btnSignIn = document.querySelector(".signin-button");
   const btnSignUp = document.querySelector(".signup-button");
   const divButtons = document.querySelector(".buttons");
   const containerForm = document.querySelector(".container-form");
-  containerForm.style.display = "none";
+  if(containerForm){
+    containerForm.style.display = "none";
+  }
 
-  //All Functions
+  // -------------- All Functions ------------
   const fetchPageSignIn = async () => {
     const fetchPage = await fetch("./src/View/signin.php");
     const getFetch = await fetchPage.text();
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formRegister = async (form, messError) => {
     const formData = new FormData(form);
 
-    const fetchForm = await fetch("./src/View/signin.php?register", {
+    const fetchForm = await fetch("/super-reminder/home?register", {
       method: "POST",
       body: formData,
     });
@@ -65,8 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const fetchPageSignUp = async () => {
+
+    //requete de la page 
     const fetchPageSignUp = await fetch("./src/View/signup.php");
     const getFetchPage = await fetchPageSignUp.text();
+    console.log(getFetchPage);
+  
+
+
     containerForm.innerHTML = getFetchPage;
     const btnClose = document.querySelector(".close-button");
     divButtons.style.display = "none";
@@ -77,9 +87,50 @@ document.addEventListener("DOMContentLoaded", () => {
       divButtons.style.display = "flex";
       containerForm.style.display = "none";
     });
+
+
+    //tu peux recuperer tous les éléments du formulaire 
+
+    const formConnect = document.querySelector('#formConnect');
+    const messConnect = document.querySelector('#messConnect');
+
+    console.log(formConnect);
+    formConnect.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      console.log('formConnect');
+
+      const formData = new FormData(formConnect);
+      const fetchFormConnect = await fetch("/super-reminder/home?login",{
+        method: 'POST',
+        body: formData,
+      })
+
+      const response = await fetchFormConnect.json();
+      //message json
+      if(response['connectEmpty']){
+        messConnect.textContent=response.connectEmpty;
+        messConnect.style.color = "red";
+
+      }else if(response['checkLogin']){
+        messConnect.textContent=response.checkLogin;
+        messConnect.style.color = "red";
+        setTimeout(()=>{
+          messConnect.textContent = "";
+
+        }
+        ,2000);
+      }else if(response['validConnect']){
+        messConnect.textContent=response.validConnect;
+        messConnect.style.color = "green";
+        window.location.href = '/super-reminder/users';
+      }
+    
+
+    })
   };
 
-  //Event
+
+  // -------------- All Event -------------
   btnSignIn.addEventListener("click", () => {
     fetchPageSignIn();
   });
@@ -88,3 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPageSignUp();
   });
 });
+
+
+
+

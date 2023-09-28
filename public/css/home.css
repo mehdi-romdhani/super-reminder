@@ -15,7 +15,7 @@
   
   /* Header Styles */
   header {
-    background-color: #3498db; /* Bleu vif */
+    background-color: #314e61; /* Bleu vif */
     color: #fff;
     padding: 15px 0;
   }
@@ -245,5 +245,51 @@
         font-size: 14px; /* Reduce font size for smaller screens */
     }
   }
+
+  /* Styles pour le conteneur des tâches */
+#task-container {
+  display: flex; /* Utiliser la disposition flexbox pour les deux divs */
+  justify-content: space-between; /* Espacement horizontal entre les divs */
+  background-color: #f0f0f0; /* Couleur de fond pour le conteneur (gris clair) */
+  padding: 20px; /* Marge intérieure pour l'espace entre les divs */
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Styles pour la div des tâches en cours */
+#task-in-progress {
+  flex-basis: 48%; /* Largeur de la div des tâches en cours (48% de la largeur du conteneur) */
+  background-color: #3498db; /* Couleur de fond pour les tâches en cours (bleu vif) */
+  color: #fff; /* Couleur du texte (blanc) */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#task-completed {
+  flex-basis: 48%; /* Largeur de la div des tâches terminées (48% de la largeur du conteneur) */
+  background-color: #27ae60; /* Couleur de fond pour les tâches terminées (vert vif) */
+  color: #fff; /* Couleur du texte (blanc) */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task-title {
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #task-container {
+    flex-direction: column; /* Mettre en colonne pour les écrans plus petits */
+  }
+
+  #task-in-progress,
+  #task-completed {
+    flex-basis: 100%; /* Occuper la pleine largeur en mode vertical */
+    margin-bottom: 10px; /* Espacement entre les divs */
+  }
+}
+
   
 

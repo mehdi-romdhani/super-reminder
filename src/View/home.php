@@ -13,14 +13,15 @@ use App\Model\ConnectDb;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
     <script src="./public/js/menu.js" defer></script>
     <script src="./public/js/script.js" defer></script>
     <script src="./public/js/script_control_form.js" defer></script>
     <title>Organize Me</title>
 </head>
 <body>
+    
     <header>
         <nav>
             <div class="logo">
