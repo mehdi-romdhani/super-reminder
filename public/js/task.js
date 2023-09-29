@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskForm = document.querySelector("#task-form");
   const messTask = document.querySelector("#messTask");
   const taskList = document.querySelector("#task_list");
-
-//All Functions
+  const taskInProgress = document.querySelector("#task-in-progress");
+    
+  //All Functions
   const addTask = async () => {
     const dataTask = new FormData(taskForm);
     const fetchTaskForm = await fetch("/super-reminder/users?task", {
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const response = await fetchTaskForm.json();
     console.log(response);
-
+    
     if (response["emptyTask"]) {
       messTask.textContent = response.emptyTask;
     } else if (response["validTask"]) {
@@ -23,12 +24,35 @@ document.addEventListener("DOMContentLoaded", () => {
       messTask.style.color = "green";
     }
   };
+  
 
+  const displayTask = async() =>{
+      const fetchData = await fetch("/super-reminder/list_task");
+      const listTask = await fetchData.json();
+      
+      // affichage tâches
+      
+      listTask.forEach((list)=>{
+        console.log(list['task_description']);
+
+       // const ul = document.createElement('ul');
+        const li = document.createElement('li');
+        li.textContent = listTask;
+      
+      })
+      
+      
+    }
+    
 //All Event
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
     addTask();
+    displayTask();
+
   });
+
+
 
   
 });
