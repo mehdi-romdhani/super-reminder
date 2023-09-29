@@ -216,3 +216,13 @@ h2 {
 #messTask{
     margin-top: 15px;
 }
+
+.list_task li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid red;
+  
+}
+
+

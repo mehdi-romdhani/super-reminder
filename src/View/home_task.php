@@ -17,8 +17,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
         <!-- //JS -->
         <script src="./public/js/menu.js" defer></script>
-        <script src="./public/js/script.js" defer></script>
-        <script src="./public/js/script_control_form.js" defer></script>
+        <!-- <script src="./public/js/script.js" defer></script> -->
+        <!-- <script src="./public/js/script_control_form.js" defer></script> -->
         <script src="./public/js/task.js" defer></script>
 
         <title>Organize Me</title>
@@ -65,6 +65,7 @@
         <div id="task-container">
             <div id="task-in-progress">
                 <h3 class="task-title">Tâches en cours</h3>
+                <!-- //list -->
             </div>
             <div id="task-completed">
                 <h3 class="task-title">Tâches terminées</h3>
