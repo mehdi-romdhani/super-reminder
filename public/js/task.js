@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // All Events
+  // All Events 
 
   listeProgress.addEventListener("change", (e) => {
     if (e.target.classList.contains("checkbox_task") && e.target.checked) {

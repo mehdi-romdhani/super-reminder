@@ -33,6 +33,17 @@ public function controllerAddTask(array $array){
     echo json_encode($mess);
 }
 
+public function controllerDoneTask(){
+
+    $mess =[];
+    $id = $_SESSION['id'];
+    $newTask = new Task();
+
+    if($mess['taskDone']= "Tâche terminée"){
+        $newTask->doneTask($id);
+    }
+}
+
 
 
     

@@ -127,4 +127,15 @@ class Task extends ConnectDb
 
         echo json_encode($result);
     }
+
+
+    public function doneTask(int $id){
+
+        $req = "UPDATE task SET task_done = 1 WHERE id = :id";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+    }
 }
+
